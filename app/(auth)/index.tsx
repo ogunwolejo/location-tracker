@@ -12,8 +12,6 @@ import {useThemeColor} from "@/hooks/useThemeColor"
 import {Text, Button} from "react-native-paper"
 import {Features} from "@/components/ui/features"
 import {SwiperDot, ActiveSwiperDot} from "@/components/ui/swiper-dot"
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6"
-//import EmailPasswordForm from "@/components/ui/form"
 import {useRouter} from "expo-router"
 
 const WelcomeScreen = (): JSX.Element => {
@@ -134,7 +132,7 @@ const LocationHistory: NamedExoticComponent = memo((): JSX.Element => {
             style={{alignSelf: "flex-end"}}
             onPress={locationTrackerHandle}
           >
-            skip
+            next
           </Button>
 
       </View>

@@ -110,7 +110,7 @@ export const LocationContextProvider = ({
 
         let location = await Location.getCurrentPositionAsync({
           accuracy: Location.Accuracy.Balanced,
-          timeInterval: 5000,
+          timeInterval: 200,
         })
         setCurrentLocation(location)
       } catch (error: any) {
@@ -128,10 +128,11 @@ export const LocationContextProvider = ({
       await Location.watchPositionAsync(
         {
           accuracy: Location.Accuracy.High,
-          timeInterval: 5000, //5s
-          distanceInterval: 10,
+          timeInterval: 200, //5s
+          //distanceInterval: 10,
         },
         (location) => {
+          setCurrentLocation(location)
           setLocations((prev) => [...prev, location])
         },
       )
@@ -141,8 +142,8 @@ export const LocationContextProvider = ({
   const startBackgroundTracking = async () => {
     await Location.startLocationUpdatesAsync(BACKGROUND_LOCATION_TASK, {
       accuracy: Location.Accuracy.High,
-      timeInterval: 5000, // 5s
-      distanceInterval: 10,
+      timeInterval: 200, // 5s
+      //distanceInterval: 10,
       foregroundService: {
         notificationTitle: "Location Tracking Active",
         notificationBody: "Tap to return to the app",
