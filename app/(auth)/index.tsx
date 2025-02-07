@@ -13,7 +13,8 @@ import {Text, Button} from "react-native-paper"
 import {Features} from "@/components/ui/features"
 import {SwiperDot, ActiveSwiperDot} from "@/components/ui/swiper-dot"
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6"
-import EmailPasswordForm from "@/components/ui/form"
+//import EmailPasswordForm from "@/components/ui/form"
+import {useRouter} from "expo-router"
 
 const WelcomeScreen = (): JSX.Element => {
   const {height, width} = useWindowDimensions()
@@ -102,6 +103,9 @@ const LiveTracker: NamedExoticComponent = memo((): JSX.Element => {
 const LocationHistory: NamedExoticComponent = memo((): JSX.Element => {
   const primary = useThemeColor({}, "primary")
   const muted = useThemeColor({}, "muted")
+  const router = useRouter()
+  const locationTrackerHandle = (e: GestureResponderEvent) =>
+    router.replace("/(tabs)")
 
   return (
     <Fragment>
@@ -120,12 +124,19 @@ const LocationHistory: NamedExoticComponent = memo((): JSX.Element => {
         </Text>
       </View>
 
+      
       <View
-        style={{flexGrow: 1, justifyContent: "space-between", marginTop: 15}}
+        style={{flexGrow: 1, justifyContent: "flex-end", marginTop: 15}}
       >
-        <View style={styles.login_container}>
-          <EmailPasswordForm />
-        </View>
+        <Button
+            mode="text"
+            textColor={primary}
+            style={{alignSelf: "flex-end"}}
+            onPress={locationTrackerHandle}
+          >
+            skip
+          </Button>
+
       </View>
     </Fragment>
   )
