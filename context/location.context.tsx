@@ -107,6 +107,12 @@ export const LocationContextProvider = ({
         } else {
           setHasBackgroundPermission(backgroundStatus === "granted")
         }
+
+        let location = await Location.getCurrentPositionAsync({
+          accuracy: Location.Accuracy.Balanced,
+          timeInterval: 5000,
+        })
+        setCurrentLocation(location)
       } catch (error: any) {
         handleError(error.message)
       } finally {

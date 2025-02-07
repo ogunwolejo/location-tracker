@@ -19,7 +19,7 @@ SplashScreen.preventAutoHideAsync()
 function Root() {
   const colorScheme = useColorScheme()
   const {loading, token} = useAuthContext()
-  const {isLoading, location} = useLocationContext()
+  const {isLoading} = useLocationContext()
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   })
@@ -33,6 +33,8 @@ function Root() {
   if (!loaded) {
     return null
   }
+
+  //console.log(location);
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>

@@ -1,4 +1,5 @@
 # .easignore
-node_modules/
 **/ElevatedDiagnostics/
 AppData/
+node_modules/
+.git/
